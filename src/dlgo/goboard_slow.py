@@ -70,9 +70,6 @@ class Board:
 
     def place_stone(self, player: Player, point: Point):
         assert self.is_on_grid(point)
-        if self._grid.get(point):
-            print(point)
-            print(self._grid)
         assert self._grid.get(point) is None
 
         adjacent_same_color = []
