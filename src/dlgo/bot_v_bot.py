@@ -4,7 +4,7 @@ import time
 import structlog
 
 from dlgo.gotypes import Player, Point
-from dlgo.goboard_slow import Move, Board, GameState
+from dlgo.goboard import Move, Board, GameState
 from dlgo.agent.naive import RandomBot
 
 LOGGER = structlog.get_logger(__name__)

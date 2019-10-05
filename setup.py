@@ -44,8 +44,10 @@ setup(
         'requests==2.22.0',
         'structlog',
     ],
-    entry_points='''
-        [console_scripts]
-        cli=dlgo.bot_v_bot:main
-    ''',
+    entry_points={
+        'console_scripts': [
+            'bot_v_bot=dlgo.bot_v_bot:main',
+            'gen_hashes=dlgo.util.gen_hashes:main',
+        ]
+    },
 )
