@@ -6,6 +6,7 @@ import structlog
 from dlgo.gotypes import Player, Point
 from dlgo.goboard import Move, Board, GameState
 from dlgo.agent.naive import RandomBot
+from dlgo.scoring import compute_game_result
 
 LOGGER = structlog.get_logger(__name__)
 
@@ -63,6 +64,8 @@ def main(verbose=False):
         bot_move = bots[game.next_player].select_move(game)
         print_move(game.next_player, bot_move)
         game = game.apply_move(bot_move)
+
+    print(compute_game_result(game))
 
 
 if __name__ == '__main__':
