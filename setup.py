@@ -42,6 +42,7 @@ setup(
         'Click==7.0',
         'PyYAML==5.1',
         'requests==2.22.0',
+        'numpy',
         'structlog',
     ],
     entry_points={

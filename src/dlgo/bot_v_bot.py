@@ -5,7 +5,7 @@ import click
 import structlog
 
 from dlgo.gotypes import Player, Point
-from dlgo.goboard import Move, Board, GameState
+from dlgo.goboard_fast import Move, Board, GameState
 from dlgo.agent.naive import RandomBot
 from dlgo.agent.monte_carlo import MCTSBot
 from dlgo.scoring import compute_game_result

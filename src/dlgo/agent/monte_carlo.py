@@ -6,7 +6,7 @@ from structlog import get_logger
 
 from dlgo.agent.base import Agent
 from dlgo.agent.naive import RandomBot
-from dlgo.goboard import Move, GameState
+from dlgo.goboard_fast import Move, GameState
 from dlgo.gotypes import Player
 from dlgo.scoring import compute_game_result
 
@@ -56,7 +56,7 @@ class MCTSNode(object):
 
 
 class MCTSBot(Agent):
-    def __init__(self, num_rounds: int = 25, temperature: float = 1.5):
+    def __init__(self, num_rounds: int = 100, temperature: float = 1.5):
         super(MCTSBot, self).__init__()
         self.num_rounds = num_rounds
         self.temperature = temperature
