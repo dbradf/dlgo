@@ -49,6 +49,7 @@ setup(
         'console_scripts': [
             'bot_v_bot=dlgo.bot_v_bot:main',
             'gen_hashes=dlgo.util.gen_hashes:main',
+            'gen_mcts_games=dlgo.util.gen_mcts_games:main',
         ]
     },
 )
