@@ -46,6 +46,18 @@ class GameResult(namedtuple('GameResult', 'b w komi')):
         return 'W+%.1f' % (w - self.b,)
 
 
+class Resignation(object):
+    def __init__(self, resigning_player: Player):
+        self.player = resigning_player
+
+    @property
+    def winner(self) -> Player:
+        return self.player.other
+
+    def __str__(self) -> str:
+        return f"{self.winner} wins due to resignation"
+
+
 def evaluate_territory(board: Board) -> Territory:
     """
     Map a board into territory and dame.
@@ -110,6 +122,9 @@ def _collect_region(
 
 
 def compute_game_result(game_state: GameState):
+    if game_state.last_move.is_resign:
+        return Resignation(game_state.next_player.other)
+
     territory = evaluate_territory(game_state.board)
     return GameResult(
         territory.num_black_territory + territory.num_black_stones,

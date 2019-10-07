@@ -1,11 +1,13 @@
 import logging
 import time
 
+import click
 import structlog
 
 from dlgo.gotypes import Player, Point
 from dlgo.goboard import Move, Board, GameState
 from dlgo.agent.naive import RandomBot
+from dlgo.agent.monte_carlo import MCTSBot
 from dlgo.scoring import compute_game_result
 
 LOGGER = structlog.get_logger(__name__)
@@ -15,6 +17,11 @@ STONE_TO_CHAR = {
     None: ' . ',
     Player.black: ' x ',
     Player.white: ' o ',
+}
+
+BOTS = {
+    'random': RandomBot,
+    'mc': MCTSBot,
 }
 
 
@@ -46,14 +53,18 @@ def config_logging(verbose):
     structlog.configure(logger_factory=structlog.stdlib.LoggerFactory())
 
 
-def main(verbose=False):
+@click.command()
+@click.option("-w", "--white", "bot_white", required=True)
+@click.option("-b", "--black", "bot_black", required=True)
+@click.option("--verbose", is_flag=True, default=False)
+def main(bot_white, bot_black, verbose):
     config_logging(verbose)
     board_size = 9
     game = GameState.new_game(board_size)
 
     bots = {
-        Player.black: RandomBot(),
-        Player.white: RandomBot(),
+        Player.black: BOTS[bot_black](),
+        Player.white: BOTS[bot_white](),
     }
 
     while not game.is_over():

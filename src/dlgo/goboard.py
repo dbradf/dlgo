@@ -220,3 +220,16 @@ class GameState:
         return self.board.get(move.point) is None and \
                not self.is_move_self_capture(self.next_player, move) and \
                not self.does_move_violate_ko(self.next_player, move)
+
+    def legal_moves(self) -> [Move]:
+        moves = []
+        for row in range(1, self.board.num_rows + 1):
+            for col in range(1, self.board.num_cols + 1):
+                move = Move.play(Point(row, col))
+                if self.is_valid_move(move):
+                    moves.append(move)
+        # These two moves are always legal.
+        moves.append(Move.pass_turn())
+        moves.append(Move.resign())
+
+        return moves
