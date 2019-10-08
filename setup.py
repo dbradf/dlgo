@@ -40,14 +40,17 @@ setup(
     ],
     install_requires=[
         'Click==7.0',
+        'Keras',
+        'numpy',
         'PyYAML==5.1',
         'requests==2.22.0',
-        'numpy',
         'structlog',
+        'tensorflow',
     ],
     entry_points={
         'console_scripts': [
             'bot_v_bot=dlgo.bot_v_bot:main',
+            'dl_train=dlgo.agent.dl.train:main',
             'gen_hashes=dlgo.util.gen_hashes:main',
             'gen_mcts_games=dlgo.util.gen_mcts_games:main',
         ]
