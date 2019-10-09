@@ -51,6 +51,7 @@ setup(
         'console_scripts': [
             'bot_v_bot=dlgo.bot_v_bot:main',
             'dl_train=dlgo.agent.dl.train:main',
+            'download_games=dlgo.data.index_processor:main',
             'gen_hashes=dlgo.util.gen_hashes:main',
             'gen_mcts_games=dlgo.util.gen_mcts_games:main',
         ]
