@@ -42,7 +42,7 @@ setup(
         'Click==7.0',
         'Keras',
         'numpy',
-        'PyYAML==5.1',
+        'PyYAML==5.4',
         'requests==2.22.0',
         'structlog',
         'tensorflow',
