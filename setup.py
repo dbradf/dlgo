@@ -43,7 +43,7 @@ setup(
         'Keras',
         'numpy',
         'PyYAML==5.4',
-        'requests==2.22.0',
+        'requests==2.31.0',
         'structlog',
         'tensorflow',
     ],
